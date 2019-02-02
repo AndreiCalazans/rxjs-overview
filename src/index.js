@@ -1,14 +1,15 @@
 import { fromEvent } from 'rxjs';
-import { scan, throttleTime } from 'rxjs/operators';
+import { scan, throttleTime, map } from 'rxjs/operators';
 
 const button = document.querySelector('button');
 
 let count = 0;
 let rate = 1000;
 var lastClick = Date.now() - rate;
-button.addEventListener('click', () => {
+button.addEventListener('click', (event) => {
   if (Date.now() - lastClick >= rate) {
-    console.log(`Clicked ${++count} times`);
+    count += event.clientX;
+    console.log(`Clicked ${count}`);
     lastClick = Date.now();
   }
 })
@@ -18,6 +19,7 @@ button.addEventListener('click', () => {
 fromEvent(button, 'click')
   .pipe(
     throttleTime(1000),
-    scan(count => count + 1, 0)
+    map(evt => evt.clientX),
+    scan((count, clientX) => count + clientX, 0)
   )
-  .subscribe(count => console.log(`Stream cliked: ${count} times`))
+  .subscribe(count => console.log(`Stream clicked: ${count}`))
