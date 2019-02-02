@@ -1,5 +1,6 @@
 import { fromEvent } from 'rxjs';
 import { scan, throttleTime, map } from 'rxjs/operators';
+import './observables';
 
 const button = document.querySelector('button');
 
