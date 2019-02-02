@@ -1,4 +1,4 @@
-import { Obsevable, Observable } from 'rxjs';
+import { Obsevable, Observable, from } from 'rxjs';
 
 // const observable = new Observable(subscriber => {
 //   subscriber.next(1);
@@ -83,3 +83,9 @@ fooThree.subscribe(x => {
 });
 console.log('after');
 
+
+console.log('--------------------------------------------------------')
+console.log('Easy unsubscribe');
+const observable = from([10, 20, 30]);
+const subscription = observable.subscribe(console.log);
+subscription.unsubscribe();
