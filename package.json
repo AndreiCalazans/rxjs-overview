@@ -5,7 +5,8 @@
   "author": "AndreiCalazans <andreixoc@hotmail.com>",
   "license": "MIT",
   "scripts": {
-    "build": "webpack"
+    "build": "webpack",
+    "make-read-me": "git log --oneline > README && tail -r README | tee README"
   },
   "dependencies": {
     "rxjs": "^6.4.0",
