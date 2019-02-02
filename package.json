@@ -1,0 +1,10 @@
+{
+  "name": "rxjs-overview",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "AndreiCalazans <andreixoc@hotmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "rxjs": "^6.4.0"
+  }
+}
