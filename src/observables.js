@@ -1,4 +1,4 @@
-import { Obsevable, Observable, from } from 'rxjs';
+import { Obsevable, from, Observable } from 'rxjs';
 
 // const observable = new Observable(subscriber => {
 //   subscriber.next(1);
@@ -65,6 +65,9 @@ fooTwo.subscribe(y => {
 *  can return multiple values over time
 */
 
+
+// Observables are like functions with zero arguments, but generalize those to allow multiple values.
+
 console.log('--------------------------------------------------------')
 
 const fooThree = new Observable(subscriber => {
@@ -89,3 +92,15 @@ console.log('Easy unsubscribe');
 const observable = from([10, 20, 30]);
 const subscription = observable.subscribe(console.log);
 subscription.unsubscribe();
+
+
+const observTest = new Observable(sub => {
+  console.log(' START ');
+  sub.next('first value');
+  sub.next('second value');
+  sub.next('third value');
+});
+
+observTest.subscribe(returnValue => {
+  console.log("RETURN VALUE GOT", returnValue);
+})
